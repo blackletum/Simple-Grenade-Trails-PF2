@@ -1,6 +1,6 @@
 #include <sourcemod>
 #include <sdktools>
-#include <sdkhooks>
+#include <sdkhooks>          // ← ONLY ADDED LINE (required since SM 1.7+)
 
 Handle g_h_plugin_enabled = INVALID_HANDLE;
 Handle g_h_trail_time = INVALID_HANDLE;
@@ -47,10 +47,10 @@ char g_projectiles[10][64] = {
 
 public Plugin myinfo = {
 	name = "Simple Grenade Trails - Pre-Fortress 2",
-	author = "Gdk (original), SaintSoftware PF2 port",
+	author = "Gdk (original), PF2 port",
 	description = "Trails for Pre-Fortress 2 grenades",
-	version = "0.1",
-	url = "https://github.com/blackletum/Simple-Grenade-Trails-PF2"
+	version = "1.0.3-pf2",
+	url = "https://github.com/RavageCS/Simple-Grenade-Trails"
 };
 
 public void OnPluginStart() {

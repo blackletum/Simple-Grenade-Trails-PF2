@@ -1,3 +1,11 @@
+Please note that this will create a CFG file in your PF2 folder here:
+
+`/pf2/cfg/sourcemod/simple_grenade_trails_pf2.cfg`
+
+and this is what you must edit after running the plugin the first time. 
+
+Original README: 
+
 # Simple-Grenade-Trails
 Sourcemod plugin emits trails from thrown grenades
 ## Cvars:
