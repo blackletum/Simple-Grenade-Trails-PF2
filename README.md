@@ -4,6 +4,15 @@ Please note that this will create a CFG file in your PF2 folder here:
 
 and this is what you must edit after running the plugin the first time. 
 
+Preview:
+
+<div align="center">
+
+[![Preview](https://img.youtube.com/vi/hP_LyyKtnWw/hqdefault.jpg)](https://www.youtube.com/watch?v=hP_LyyKtnWw)  
+**▶ Watch the preview on YouTube**
+
+</div>
+
 Original README: 
 
 # Simple-Grenade-Trails
