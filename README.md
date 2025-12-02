@@ -1,3 +1,7 @@
+# Simple-Grenade-Trails-PF2
+
+Simple Grenade Trails for [Pre-Fortress 2](https://prefortress.com)
+
 Please note that this will create a CFG file in your PF2 folder here:
 
 `/pf2/cfg/sourcemod/simple_grenade_trails_pf2.cfg`
