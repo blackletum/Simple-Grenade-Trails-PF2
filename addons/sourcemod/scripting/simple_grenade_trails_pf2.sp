@@ -1,6 +1,6 @@
 #include <sourcemod>
 #include <sdktools>
-#include <sdkhooks>          // ← ONLY ADDED LINE (required since SM 1.7+)
+#include <sdkhooks>
 
 Handle g_h_plugin_enabled = INVALID_HANDLE;
 Handle g_h_trail_time = INVALID_HANDLE;
@@ -47,29 +47,29 @@ char g_projectiles[10][64] = {
 
 public Plugin myinfo = {
 	name = "Simple Grenade Trails - Pre-Fortress 2",
-	author = "Gdk (original), PF2 port",
+	author = "Gdk (original), SaintSoftware PF2 port",
 	description = "Trails for Pre-Fortress 2 grenades",
-	version = "1.0.3-pf2",
+	version = "0.3",
 	url = "https://github.com/RavageCS/Simple-Grenade-Trails"
 };
 
 public void OnPluginStart() {
 	g_h_plugin_enabled     = CreateConVar("sm_sgt_enabled", "1", "Enable plugin");
-	g_h_trail_time          = CreateConVar("sm_sgt_trail_time", "8", "Trail lifetime (seconds)");
-	g_h_trail_width_start   = CreateConVar("sm_sgt_trail_width_start", "2.0", "Trail start width");
-	g_h_trail_width_end     = CreateConVar("sm_sgt_trail_width_end",   "4.0", "Trail end width");
+	g_h_trail_time          = CreateConVar("sm_sgt_trail_time", "0.8", "Trail lifetime (seconds)");
+	g_h_trail_width_start   = CreateConVar("sm_sgt_trail_width_start", "4.0", "Trail start width");
+	g_h_trail_width_end     = CreateConVar("sm_sgt_trail_width_end",   "25.0", "Trail end width");
 
 	g_h_caltrop_color    = CreateConVar("sm_sgt_caltrop_color",    "Yellow",    "Caltrop trail");
 	g_h_concussion_color = CreateConVar("sm_sgt_concussion_color", "Teal",      "Concussion trail");
 	g_h_emp_color        = CreateConVar("sm_sgt_emp_color",        "Purple",    "EMP trail");
-	g_h_gas_color        = CreateConVar("sm_sgt_gas_color",        "Green",     "Gas trail");
-	g_h_heal_color       = CreateConVar("sm_sgt_heal_color",       "White",     "Heal trail");
+	g_h_gas_color        = CreateConVar("sm_sgt_gas_color",        "39 161 88",     "Gas trail");
+	g_h_heal_color       = CreateConVar("sm_sgt_heal_color",       "Blue",     "Heal trail");
 	g_h_mirv_color       = CreateConVar("sm_sgt_mirv_color",       "Red",       "MIRV trail");
 	g_h_mirvbomb_color   = CreateConVar("sm_sgt_mirvbomb_color",   "Orange",    "MIRV bomb trail");
-	g_h_nail_color       = CreateConVar("sm_sgt_nail_color",       "Gray",      "Nail trail");
+	g_h_nail_color       = CreateConVar("sm_sgt_nail_color",       "100 176 66",      "Nail trail");
 	g_h_napalm_color     = CreateConVar("sm_sgt_napalm_color",     "255 150 0", "Napalm trail");
-	g_h_normal_color     = CreateConVar("sm_sgt_normal_color",     "Red",       "Normal grenade trail");
-	g_h_default_color    = CreateConVar("sm_sgt_default_color",    "White",     "Default/fallback");
+	g_h_normal_color     = CreateConVar("sm_sgt_normal_color",     "Green",       "Normal grenade trail");
+	g_h_default_color    = CreateConVar("sm_sgt_default_color",    "Black",     "Default/fallback");
 
 	AutoExecConfig(true, "simple_grenade_trails_pf2");
 
@@ -80,7 +80,6 @@ public void OnMapStart() {
 	g_laser_sprite = PrecacheModel("materials/sprites/laserbeam.vmt");
 }
 
-// ← ONLY CHANGE IN THIS FUNCTION: proper signature for SM 1.7+
 public void OnEntityCreated(int entity, const char[] classname) {
 	if (IsValidEdict(entity) && GetConVarBool(g_h_plugin_enabled) && IsGrenadeProjectile(classname)) {
 		SDKHook(entity, SDKHook_SpawnPost, OnGrenadeSpawnPost);
